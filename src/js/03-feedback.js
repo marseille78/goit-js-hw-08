@@ -34,6 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleSubmit(e) {
       e.preventDefault();
+      const formData = new FormData(refs.form);
+      let isValid = true;
+
+      formData.forEach((value, name) => {
+        if (value.trim().length === 0) {
+          isValid = false;
+        }
+      });
+
+      if (!isValid) {
+        console.log('Fill Complete all fields of this form, please.');
+        return;
+      }
+
       console.log(JSON.parse(localStorage.getItem(KEY_LOCAL_STORAGE)));
       localStorage.removeItem(KEY_LOCAL_STORAGE);
       refs.form.reset();
