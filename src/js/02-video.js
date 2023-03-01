@@ -17,11 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     player.on('play', () => {
-      player.setCurrentTime(localStorage.getItem('videoplayer-current-time'))
-        .then(sec => {})
-        .catch(err => {
-          throw new Error(err);
-        });
+      if (localStorage.getItem('videoplayer-current-time')) {
+        player.setCurrentTime(localStorage.getItem('videoplayer-current-time'))
+          .then(sec => {})
+          .catch(err => {
+            console.log('Error test');
+            throw new Error(err);
+          });
+      }
     });
   })();
 });
