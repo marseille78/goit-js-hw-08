@@ -44,11 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (!isValid) {
-        console.log('Fill Complete all fields of this form, please.');
+        alert('Fill Complete all fields of this form, please.');
         return;
       }
 
       console.log(JSON.parse(localStorage.getItem(KEY_LOCAL_STORAGE)));
+      dataForm.email = '';
+      dataForm.message = '';
       localStorage.removeItem(KEY_LOCAL_STORAGE);
       refs.form.reset();
     }
